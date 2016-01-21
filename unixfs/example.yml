@@ -1,0 +1,66 @@
+# directory, hashes to Qm-unixfs-dir0
+---
+foo1: # each entry here is a directory
+  link: /ipfs/Qm-unixfs-dir1
+  mode: 0777 # (optional) unix permissions
+  size: 220  # (required) object size
+foo2:
+  link: /ipfs/Qm-unixfs-dir2
+  mode: 0777
+  size: 140
+
+# directory, hashes to Qm-unixfs-dir1
+---
+bar1:
+  link: /ipfs/Qm-unixfs-dir3
+  mode: 0777
+  size: 120
+bar2:
+  link: /ipfs/Qm-unixfs-dir2 # note, same as foo2 above
+  mode: 0777
+  size: 140
+
+# directory, hashes to Qm-unixfs-dir2
+---
+baz1:
+  link: /ipfs/Qm-unixfs-file0
+  mode: 0755
+  size: 30
+baz2:
+  link: /ipfs/Qm-unixfs-file1
+  mode: 0755
+  size: 10
+baz3:
+  link: /ipfs/Qm-unixfs-file2
+  mode: 0755
+  size: 10
+
+# file, hashes to Qm-unixfs-file0. illustrating file chunking
+# > unixfs cat Qm-unixfs-file0
+# hello
+# world
+# hello
+#
+---
+files:
+  - link: Qm-unixfs-file1
+    size: 10
+  - link: Qm-unixfs-file2
+    size: 10
+  - link: Qm-unixfs-file1
+    size: 10
+
+
+# file, hashes to Qm-unixfs-file1.
+# > unixfs cat Qm-unixfs-file1
+# hello
+#
+---
+body: "hello\n"
+
+# file, hashes to Qm-unixfs-file2. illustrating file sharding
+# > unixfs cat Qm-unixfs-file2
+# world
+#
+---
+body: "world\n"

@@ -1,0 +1,77 @@
+# first message (hashes to Qm-post-msg1)
+---
+from:
+  # it links to an identity object
+  link: /ipfs/Qm-identity-jbenet # (required)
+  # name is here to cache it. identity names may change.
+  # this name should be captured at send-time.
+  name: "Juan Benet" # (required)
+  # other stuff to cache is possible, like avatar links.
+
+# (required) to can be a single entry or an array
+to:
+  - link: /ipfs/Qm-identity-diasdavid
+    name: "David Dias"
+  - link: /ipfs/Qm-identity-mildred
+    name: "Mildred"
+
+# (required) title or subject
+title: "IPLD: last issues"
+
+# (required) date is unsecure. iso timestamp
+date: "2016-01-20 13:01:21.0 Z"
+
+# (optional) references list. always array. use index nums in body.
+refs:
+  - link: /ipfs/Qm-post-issue1 # (required) a ref link can link to anything
+    title: "IPLD pathing"      # (optional) title cached
+  - link: /ipfs/Qm-post-issue2
+    title: "IPLD protobuf serialization"
+
+# (required) body of the post.
+# ref-# SHOULD BE expanded by clients to a proper link.
+#       similarly, providing a link to a document should add it as a ref and link it.
+#       in-document hyperlinks may be rendered as text hyperlinks (title linked to doc)
+#       or as hypercards (title, icon, hyperlink, may be expanded in body).
+body: |
+  Hey Mildred and David,
+
+  The last two remaining issues were:
+
+  - [IPLD Pathing](ref-1)
+  - [IPLD protobuf serialization](ref-2)
+
+  Which I think we have resolved.
+
+  Juan
+
+# second message (hashes to Qm-post-msg2)
+---
+from:
+  link: /ipfs/Qm-identity-diasdavid
+  name: "David Dias"
+to:
+  - link: /ipfs/Qm-identity-jbenet
+    name: "Juan Benet"
+  - link: /ipfs/Qm-identity-mildred
+    name: "Mildred"
+title: "Re: IPLD: last issues"
+date: "2016-01-20 13:10:31 Z"
+ref:
+  - link: /ipfs/Qm-post-msg1
+    name: "IPLD: last issues"
+    rel: "response" # (optional) relationship
+
+# 'from ref-1' in body could be parsed by clients. The body
+# clients may opt to seed the body with the previous body
+# quoted, just like email clients do today. this way a body
+# could include the full text of the original message. But
+# note that this is strictly optional, as hash-linking provides
+# a way to link to + view the original communication securely
+body: |
+  > from ref-1
+  > Which I think we have resolved.
+
+  This is great news! Looking forward to using it.
+
+  David
