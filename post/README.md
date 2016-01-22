@@ -21,8 +21,6 @@ There is one _defined_ object type, and two _latent_ (defined in other specs) ob
 
 A `POST` has several fields:
 
-
-
 ## Examples
 
 ### Object Examples
@@ -31,43 +29,13 @@ See the [example.yml](example.yml) document.
 
 ### Link Examples
 
-Now, here are some ways I would expect to traverse this datastructure
-using IPLD pathing.
+Some possilbe ways to traverse this datastructure using IPLD pathing:
 
-```
-> ipld cat /ipfs/Qm-post-msg1/title
-"IPLD: last issues"
-
-> ipld cat /ipfs/Qm-post-msg1/date
-"2016-01-20 13:01:21.0 Z"
-
-> ipld cat /ipfs/Qm-post-msg1/from/name
-> ipld cat /ipfs/Qm-post-msg1/from.name
-"Juan Benet" (from Qm-post-msg1)
-
-> ipld cat /ipfs/Qm-post-msg1/from/link/name
-> ipld cat /ipfs/Qm-post-msg1/from/@/name
-> ipld cat /ipfs/Qm-post-msg1/from//name
-"Juan Benet" (from Qm-identity-jbenet)
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0/title
-> ipld cat /ipfs/Qm-post-msg1/refs.0.title
-"IPLD pathing" (from Qm-post-msg1)
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0/link/title
-> ipld cat /ipfs/Qm-post-msg1/refs/0//title
-"IPLD pathing" (from Qm-post-issue1)
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0
----
-link: /ipfs/Qm-post-issue1
-title: IPLD pathing
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0/link
-"/ipfs/Qm-post-issue1"
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0/link/
-> ipld cat /ipfs/Qm-post-msg1/refs/0//
----
-the document linked by /ipfs/Qm-post-issue1>
-```
+- 1) [transparent, no link properties access](paths-1.md)
+- 2) [transparent, no link properties](paths-2.md)
+- 3) [transparent, hope for the best](paths-3.md)
+- 4) [different delimiters, strict](paths-4.md)
+- 5) [different delimiters, permissive](paths-5.md)
+- 6) [.object and .link accessors](paths-6.md)
+- 7) [use explicit `link/` to resolve through](paths-7.md)
+- 8) [different delimiters, strict and explicit `link/`](paths-8.md)

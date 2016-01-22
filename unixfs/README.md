@@ -51,102 +51,17 @@ See the [example.yml](example.yml) document.
 
 ### Link Examples
 
-Now, here are some ways I would expect to traverse this datastructure
-using IPLD pathing.
+Some possilbe ways to traverse this datastructure using IPLD pathing:
 
-#### IPLD Pathing
+- 1) [transparent, no link properties access](paths-1.md)
+- 2) [transparent, no link properties](paths-2.md)
+- 3) [transparent, hope for the best](paths-3.md)
+- 4) [different delimiters, strict](paths-4.md)
+- 5) [different delimiters, permissive](paths-5.md)
+- 6) [.object and .link accessors](paths-6.md)
+- 7) [use explicit `link/` to resolve through](paths-7.md)
+- 8) [different delimiters, strict and explicit `link/`](paths-8.md)
 
-These examples are IPLD pathing.
+And unixfs-aware file/dir pathing:
 
-```
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1
----
-link: /ipfs/Qm-unixfs-dir1
-mode: 0777
-size: 220
-
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/link
-"/ipfs/Qm-unixfs-dir1"
->
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/link/
----
-bar1:
-  link: /ipfs/Qm-unixfs-dir3
-  mode: 0777
-  size: 120
-bar2:
-  link: /ipfs/Qm-unixfs-dir2 # note, same as foo2 above
-  mode: 0777
-  size: 140
->
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/link/bar1/mode
-0777
->
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/link/bar1/size
-120
->
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/link/bar1/link/baz2/link/
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1//bar1//baz2//
----
-body: "hello\n"
-
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/link/bar1/link/baz2/link/body
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1//bar1//baz2//body
-hello
-
->
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/link/bar1/link/baz1/link/
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1//bar1//baz1//
----
-files:
-  - link: Qm-unixfs-file1
-    size: 10
-  - link: Qm-unixfs-file2
-    size: 10
-  - link: Qm-unixfs-file1
-    size: 10
->
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/link/bar1/link/baz1/link/body
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1//bar1//baz1//body
-> # no body
-```
-
-#### unixfs Pathing
-
-These examples are unixfs pathing, which is aware of what the datastructure represents (eg concatenating the bodies of files, etc).
-
-```
-> unixfs cat /ipfs/Qm-unixfs-dir1/foo1
-cat: /ipfs/Qm-unixfs-dir1/foo1: Is a directory
->
-> unixfs ls /ipfs/Qm-unixfs-dir1/foo1
-bar1
-bar2
->
-> unixfs cat /ipfs/Qm-unixfs-dir1/foo1/link
-cat: /ipfs/Qm-unixfs-dir1/foo1/link: No such file or directory
->
-> unixfs cat /ipfs/Qm-unixfs-dir1/foo1/bar1/mode
-cat: /ipfs/Qm-unixfs-dir1/foo1/mode: No such file or directory
->
-> unixfs stat /ipfs/Qm-unixfs-dir1/foo1/bar1
-name: bar1
-mode: 0777
-size: 120
->
-> unixfs stat --fmt line /ipfs/Qm-unixfs-dir1/foo1/bar1
-077   120   bar1
->
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/bar1/baz2
-hello
-
->
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/bar1/baz2/body
-cat: /ipfs/Qm-unixfs-dir1/foo1/bar1/baz2/body: Not a directory
->
-> ipld cat /ipfs/Qm-unixfs-dir1/foo1/bar1/baz1
-hello
-world
-hello
-
-```
+- [unixfs pathing](paths-unixfs.md)
