@@ -34,6 +34,10 @@ baz3:
   link: /ipfs/Qm-unixfs-file2
   mode: 0755
   size: 10
+link: # a file named "link", could happen
+  link: /ipfs/Qm-unixfs-file2
+  mode: 0755
+  size: 10
 
 # file, hashes to Qm-unixfs-file0. illustrating file chunking
 # > unixfs cat Qm-unixfs-file0

@@ -31,11 +31,11 @@ The problem boils down to an issue introduced by the combination of **link-local
 To resolve this, a number of variations have been presented:
 
 - **1) transparent, no link properties access** use only `/` but disallow accessing link-local properties. cons: cannot access link properties :(
-- **2) transparent, no link properties** use only `/` but disallow using link-local properties. cons: cannot HAVE link properties :c
+- **2) transparent, no link properties** use only `/` but disallow using link-local properties. Because it is not possible to strictly enforce this, it is equivalent to the first path style. cons: cannot HAVE link properties :c
 - **3) transparent, hope for the best** use only `/` and _define_ the order the accesses happen, so that it is not ambiguous. cons: it may be confusing.
 - **4) different delimiters, strict** - use different delimiters for "link local" and "link resolving" components (eg `. /` or `/ //`). cons: two delimiters, escaping or incompatibilities
 - **5) different delimiters, permissive** like (3) + (4), allow different delimiters to disambiguate "link local" and "link resolving" components
-- **6) .object and .link accessors** use explicit `.object` to access the object resolved through, and/or `.link` for accessing link local properties.
+- **6) .object and .link accessors** use explicit `.object` to access the object resolved through, and/or `.link` for accessing link local properties. One could be the default in case no suffix is specified.
 - **7) use explicit `link/` to resolve through** (or some other operator string/char) con: a/link/b/link/c/link typing.
 - **8) different delimiters, strict and explicit `link/`**, a combination of (5) and (8).
 
