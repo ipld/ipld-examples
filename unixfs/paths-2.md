@@ -5,33 +5,55 @@ These examples are IPLD pathing of the unixfs datastructure, in the "(2) transpa
 **WARNING**: would need to change [example.yml](./example.yml) to remove link properties.
 
 ```
-> ipld cat /ipfs/Qm-post-msg1/title
-"IPLD: last issues"
-
-> ipld cat /ipfs/Qm-post-msg1/date
-"2016-01-20 13:01:21.0 Z"
-
-> ipld cat /ipfs/Qm-post-msg1/from/name
-"Juan Benet" (from Qm-identity-jbenet)
-
-> ipld cat /ipfs/Qm-post-msg1/from/name
-"Juan Benet" (from Qm-identity-jbenet)
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0/title
-"IPLD pathing" (from Qm-post-issue1)
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0/title
-"IPLD pathing" (from Qm-post-issue1)
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1
 ---
-the document linked by /ipfs/Qm-post-issue1>
-```
+bar1:
+  link: /ipfs/Qm-unixfs-dir3
+  mode: 0777
+  size: 120
+bar2:
+  link: /ipfs/Qm-unixfs-dir2 # note, same as foo2 above
+  mode: 0777
+  size: 140
 
-> ipld cat /ipfs/Qm-post-msg1/refs/0/link
-cat: /ipfs/Qm-post-msg1/refs/0/link: no property named "link"
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0/
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/link
+cat: /ipfs/Qm-unixfs-dir0/foo1/link: no property named "link"
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/
 ---
-the document linked by /ipfs/Qm-post-issue1>
+bar1:
+  link: /ipfs/Qm-unixfs-dir3
+  mode: 0777
+  size: 120
+bar2:
+  link: /ipfs/Qm-unixfs-dir2 # note, same as foo2 above
+  mode: 0777
+  size: 140
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/link/bar1/mode
+cat: /ipfs/Qm-unixfs-dir0/foo1/link: no property named "mode"
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/link/bar1/size
+cat: /ipfs/Qm-unixfs-dir0/foo1/link: no property named "size"
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/bar2/baz2/
+---
+body: "hello\n"
+
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/bar2/baz2/body
+hello
+
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/bar2/baz1/
+---
+files:
+  - link: Qm-unixfs-file1
+    size: 10
+  - link: Qm-unixfs-file2
+    size: 10
+  - link: Qm-unixfs-file1
+    size: 10
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/bar2/baz1/body
+> # no body
 ```

@@ -1,38 +1,57 @@
 # IPLD Pathing: (6) .object and .link accessors
 
-These examples are IPLD pathing of the unixfs datastructure, in the "(6) .object and .link accessors" style.
+These examples are IPLD pathing of the unixfs datastructure, in the "(6) .object and .link accessors" style. Here, we suppose the `.object` prefix is the default one.
 
 ```
-> ipld cat /ipfs/Qm-post-msg1/title
-"IPLD: last issues"
-
-> ipld cat /ipfs/Qm-post-msg1/date
-"2016-01-20 13:01:21.0 Z"
-
-> ipld cat /ipfs/Qm-post-msg1/from.link/name
-"Juan Benet" (from Qm-post-msg1)
-
-> ipld cat /ipfs/Qm-post-msg1/from/name
-> ipld cat /ipfs/Qm-post-msg1/from.object/name
-"Juan Benet" (from Qm-identity-jbenet)
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0.link/title
-"IPLD pathing" (from Qm-post-msg1)
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0/title
-> ipld cat /ipfs/Qm-post-msg1/refs/0.object/title
-"IPLD pathing" (from Qm-post-issue1)
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1.link
 ---
-link: /ipfs/Qm-post-issue1
-title: IPLD pathing
+link: /ipfs/Qm-unixfs-dir1
+mode: 0777
+size: 220
 
-> ipld cat /ipfs/Qm-post-msg1/refs/0.link/link
-"/ipfs/Qm-post-issue1"
-
-> ipld cat /ipfs/Qm-post-msg1/refs/0/
-> ipld cat /ipfs/Qm-post-msg1/refs/0.object
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1.link/link
+"/ipfs/Qm-unixfs-dir1"
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/ # or
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1.object/
 ---
-the document linked by /ipfs/Qm-post-issue1>
+bar1:
+  link: /ipfs/Qm-unixfs-dir3
+  mode: 0777
+  size: 120
+bar2:
+  link: /ipfs/Qm-unixfs-dir2 # note, same as foo2 above
+  mode: 0777
+  size: 140
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1.object/bar1.link/mode
+0777
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1.object/bar1.link/size
+120
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/bar2/baz2/ #or
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1.object/bar2.object/baz2.object/
+---
+body: "hello\n"
+
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/bar2/baz2/body #or
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1.object/bar2.object/baz2.object/body
+hello
+
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/bar2/baz1/ #or
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1.object/bar2.object/baz1.object/
+---
+files:
+  - link: Qm-unixfs-file1
+    size: 10
+  - link: Qm-unixfs-file2
+    size: 10
+  - link: Qm-unixfs-file1
+    size: 10
+>
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1/bar2/baz1/body # or
+> ipld cat /ipfs/Qm-unixfs-dir0/foo1.object/bar2.object/baz1.object/body
+> # no body
 ```
