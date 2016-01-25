@@ -1,0 +1,16 @@
+---
+  @context: http://schema.org
+  @type: MusicRecording
+  name: Christmas Will Break Your Heart
+  byArtist: 
+    @type: MusicGroup
+    name: LCD Soundsystem
+  inAlbum: 
+    link: /ipfs/Qm-mediachain-album1
+  author: 
+    @type: Person
+    link: /ipfs/Qm-mediachain-artist1
+  image: 
+    @type: Photograph
+    contentUrl: 
+      link: /ipfs/Qm-literal-photo-bytes
