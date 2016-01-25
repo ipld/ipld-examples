@@ -1,3 +1,4 @@
+# hashes to Qm-mediachain-song1
 ---
   @type: MusicRecording
   name: Christmas Will Break Your Heart
@@ -13,3 +14,14 @@
     @type: Photograph
     contentUrl: 
       link: /ipfs/Qm-literal-photo-bytes
+
+# hashes to Qm-mediachain-album1
+---
+  @type: Album
+  name: LCD Soundsystem's Triumphant Return
+
+# hashes to Qm-mediachain-artist1
+---
+  @type: Person
+  name: James Murphy
+  bitcoinAddress: 19d3ynnuNKbgFLxp6XsyoxxGSvoAzBYPMw
