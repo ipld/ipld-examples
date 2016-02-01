@@ -9,7 +9,7 @@ These examples aim to be complete.
 - (todo) [foaf](foaf) SW/LD style FOAF
 - (todo) [identity](identity) a basic identity system
 - (todo) [keychain](keychain) a draft for [the keychain datastruct](//github.com/ipfs/specs/tree/master/keychain)
-- (todo) [mine](mine) a draft for the Mine mediachain
+- (wip) [mediachain](mediachain) a draft for the Mine [Mediachain](//medium.com/mine-labs/mediachain-483f49cbe37a)
 - (todo) [minecraft](minecraft) for a minecraft like game.
 - (todo) [multikey](multikey) a draft for [the multikey format](//github.com/jbenet/multikey)
 - (todo) [orbit](orbit) a draft for [orbit](//github.com/haadcode/anonymous-networks)
