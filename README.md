@@ -1,6 +1,6 @@
 # IPLD Examples
 
-This repo contains several datastructure examples to use with [IPLD](//github.com/ipfs/specs/tree/master/ipld), the new data format for IPFS.
+This repo contains several datastructure examples to use with [IPLD](//github.com/ipfs/specs/blob/ipld-spec/merkledag/ipld.md), the new data format for IPFS.
 
 These examples aim to be complete.
 
