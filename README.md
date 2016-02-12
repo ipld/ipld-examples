@@ -37,6 +37,6 @@ To resolve this, a number of variations have been presented:
 - **5) different delimiters, permissive** like (3) + (4), allow different delimiters to disambiguate "link local" and "link resolving" components
 - **6) .object and .link accessors** use explicit `.object` to access the object resolved through, and/or `.link` for accessing link local properties.
 - **7) use explicit `link/` to resolve through** (or some other operator string/char) con: a/link/b/link/c/link typing.
-- **8) different delimiters, strict and explicit `link/`**, a combination of (4) and (8).
+- **8) different delimiters, strict and explicit `link/`**, a combination of (4) and (7).
 
 One goal of this repo is to experiment with these and see which feels best.
