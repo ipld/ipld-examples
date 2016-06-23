@@ -1,5 +1,9 @@
 # IPLD Examples
 
+[![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io)
+[![](https://img.shields.io/badge/project-IPFS-blue.svg?style=flat-square)](http://ipfs.io/)
+[![](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](http://webchat.freenode.net/?channels=%23ipfs)
+
 This repo contains several datastructure examples to use with [IPLD](//github.com/ipfs/specs/tree/master/ipld), the new data format for IPFS.
 
 These examples aim to be complete.
@@ -18,7 +22,6 @@ These examples aim to be complete.
 - (todo) [sharding](sharding) a draft for [IPFS object sharding](//github.com/ipfs/notes/issues/76)
 - (ok) [unixfs](unixfs) a draft for [IPFS unixfs](//github.com/ipfs/specs/tree/master/unixfs)
 - (todo) [uport](uport) a draft for the Ethereum/ConsenSys uPort wallet profiles
-
 
 ## Experiment
 
@@ -40,3 +43,15 @@ To resolve this, a number of variations have been presented:
 - **8) different delimiters, strict and explicit `link/`**, a combination of (4) and (7).
 
 One goal of this repo is to experiment with these and see which feels best.
+
+## Contribute
+
+Feel free to join in. All welcome. Open an [issue](https://github.com/ipfs/ipld-examples/issues)!
+
+This repository falls under the IPFS [Code of Conduct](https://github.com/ipfs/community/blob/master/code-of-conduct.md).
+
+[![](https://cdn.rawgit.com/jbenet/contribute-ipfs-gif/master/img/contribute.gif)](https://github.com/ipfs/community/blob/master/contributing.md)
+
+## License
+
+[MIT](LICENSE)
