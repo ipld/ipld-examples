@@ -1,3 +1,5 @@
+**This repository is no longer maintained, see https://ipld.io for the latest information on IPLD and its use.**
+
 # IPLD Examples
 
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io)
